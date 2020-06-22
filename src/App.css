@@ -4,9 +4,22 @@
   align-items: center;
 }
 
-.Buttons {
+.ButtonBox {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.Buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 30%;
   margin-bottom: 1rem;
+}
+
+.Board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

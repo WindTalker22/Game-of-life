@@ -68,42 +68,47 @@ const GameBoard = () => {
 
   return (
     <>
-      <div className='Buttons'>
-        <button
-          onClick={() => {
-            setRunning(!running)
-            if (!running) {
-              runningRef.current = true
-              runSimulation()
-            }
-          }}
-        >
-          {running ? 'stop' : 'start'}
-        </button>
-        <button
-          onClick={() => {
-            const rows = []
+      <div className='ButtonBox'>
+        <div className='Buttons'>
+          <button
+            onClick={() => {
+              setRunning(!running)
+              if (!running) {
+                runningRef.current = true
+                runSimulation()
+              }
+            }}
+          >
+            {running ? 'stop' : 'start'}
+          </button>
+          <button
+            onClick={() => {
+              const rows = []
 
-            for (let i = 0; i < numRows; i++) {
-              rows.push(
-                Array.from(Array(numCols), () => (Math.random() > 0.5 ? 1 : 0))
-              )
-            }
+              for (let i = 0; i < numRows; i++) {
+                rows.push(
+                  Array.from(Array(numCols), () =>
+                    Math.random() > 0.5 ? 1 : 0
+                  )
+                )
+              }
 
-            setGrid(rows)
-          }}
-        >
-          random
-        </button>
-        <button
-          onClick={() => {
-            setGrid(generateEmptyGrid())
-          }}
-        >
-          clear
-        </button>
+              setGrid(rows)
+            }}
+          >
+            random
+          </button>
+          <button
+            onClick={() => {
+              setGrid(generateEmptyGrid())
+            }}
+          >
+            clear
+          </button>
+        </div>
       </div>
       <div
+        className='Board'
         style={{
           display: 'grid',
           gridTemplateColumns: `repeat(${numCols}, 20px)`,
