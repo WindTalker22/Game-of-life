@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useRef } from 'react'
 import produce from 'immer'
 
-const numRows = 50
-const numCols = 50
+const numRows = 20
+const numCols = 30
 
 const operations = [
   [0, 1],
@@ -68,18 +68,41 @@ const GameBoard = () => {
 
   return (
     <>
-      <button
-        onClick={() => {
-          setRunning(!running)
-          if (!running) {
-            runningRef.current = true
-            runSimulation()
-          }
-        }}
-      >
-        {running ? 'stop' : 'start'}
-      </button>
-      <button>clear</button>
+      <div className='Buttons'>
+        <button
+          onClick={() => {
+            setRunning(!running)
+            if (!running) {
+              runningRef.current = true
+              runSimulation()
+            }
+          }}
+        >
+          {running ? 'stop' : 'start'}
+        </button>
+        <button
+          onClick={() => {
+            const rows = []
+
+            for (let i = 0; i < numRows; i++) {
+              rows.push(
+                Array.from(Array(numCols), () => (Math.random() > 0.5 ? 1 : 0))
+              )
+            }
+
+            setGrid(rows)
+          }}
+        >
+          random
+        </button>
+        <button
+          onClick={() => {
+            setGrid(generateEmptyGrid())
+          }}
+        >
+          clear
+        </button>
+      </div>
       <div
         style={{
           display: 'grid',
