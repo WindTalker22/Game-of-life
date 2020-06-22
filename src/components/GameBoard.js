@@ -15,18 +15,20 @@ const operations = [
   [-1, 0],
 ]
 
-generateEmptyGrid()
+const generateEmptyGrid = () => {
+  const rows = []
+
+  for (let i = 0; i < numRows; i++) {
+    rows.push(Array.from(Array(numCols), () => 0))
+  }
+
+  return rows
+}
 
 const GameBoard = () => {
   // <------Creating Grid------->
   const [grid, setGrid] = useState(() => {
-    const rows = []
-
-    for (let i = 0; i < numRows; i++) {
-      rows.push(Array.from(Array(numCols), () => 0))
-    }
-
-    return rows
+    return generateEmptyGrid()
   })
 
   const [running, setRunning] = useState(false)
