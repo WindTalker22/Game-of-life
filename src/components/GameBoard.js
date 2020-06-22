@@ -31,7 +31,7 @@ const GameBoard = () => {
   })
   const [sum, setSum] = useState(0)
   const [generation, setGeneration] = useState(0)
-  const timeRef = useRef(500)
+  const timeRef = useRef(300)
 
   const [running, setRunning] = useState(false)
 
@@ -66,8 +66,8 @@ const GameBoard = () => {
       })
     })
 
-    setTimeout(runSimulation, 100)
-  }, [])
+    setTimeout(runSimulation, timeRef.current)
+  }, [timeRef.current])
 
   return (
     <>
@@ -82,7 +82,7 @@ const GameBoard = () => {
               }
             }}
           >
-            {running ? 'stop' : 'start'}
+            {running ? 'Stop' : 'Start'}
           </button>
           <button
             onClick={() => {
@@ -99,14 +99,35 @@ const GameBoard = () => {
               setGrid(rows)
             }}
           >
-            random
+            Random
           </button>
           <button
             onClick={() => {
               setGrid(generateEmptyGrid())
             }}
           >
-            clear
+            Clear
+          </button>
+          <button
+            onClick={() => {
+              timeRef.current = 5
+            }}
+          >
+            Speed Up
+          </button>
+          <button
+            onClick={() => {
+              timeRef.current = 300
+            }}
+          >
+            Normal
+          </button>
+          <button
+            onClick={() => {
+              timeRef.current = 800
+            }}
+          >
+            Slow Down
           </button>
         </div>
       </div>
