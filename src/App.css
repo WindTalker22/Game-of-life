@@ -4,10 +4,27 @@
   align-items: center;
 }
 
+.Cell {
+  background: #ccc;
+  position: absolute;
+}
+
 .Board {
   position: relative;
   margin: 0 auto;
   background-color: #000;
   background-image: linear-gradient(#333 1px, transparent 1px),
     linear-gradient(90deg, #333 1px, transparent 1px);
+}
+
+.Controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Button {
+  margin-left: 12px;
+  cursor: pointer;
 }
