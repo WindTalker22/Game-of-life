@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useRef } from 'react'
 import produce from 'immer'
 
-const numRows = 20
-const numCols = 30
+const numRows = 30
+const numCols = 40
 
 const operations = [
   [0, 1],
@@ -26,10 +26,12 @@ const generateEmptyGrid = () => {
 }
 
 const GameBoard = () => {
-  // <------Creating Grid------->
   const [grid, setGrid] = useState(() => {
     return generateEmptyGrid()
   })
+  const [sum, setSum] = useState(0)
+  const [generation, setGeneration] = useState(0)
+  const timeRef = useRef(500)
 
   const [running, setRunning] = useState(false)
 
@@ -46,6 +48,7 @@ const GameBoard = () => {
           for (let j = 0; j < numCols; j++) {
             let neighbors = 0
             operations.forEach(([x, y]) => {
+              //^^^ looks for neighbors in all directions whether alive or dead
               const newI = i + x
               const newJ = j + y
               if (newI >= 0 && newI < numRows && newJ >= 0 && newJ < numCols) {
@@ -63,7 +66,7 @@ const GameBoard = () => {
       })
     })
 
-    setTimeout(runSimulation, 1000)
+    setTimeout(runSimulation, 100)
   }, [])
 
   return (
@@ -120,14 +123,16 @@ const GameBoard = () => {
               key={`${i}-${j}`}
               onClick={() => {
                 const newGrid = produce(grid, (gridCopy) => {
+                  //^^^immer produces a copy of the grid to dbl buffer
                   gridCopy[i][j] = grid[i][j] ? 0 : 1
                 })
                 setGrid(newGrid)
               }}
               style={{
+                // living cells
                 width: 20,
                 height: 20,
-                backgroundColor: grid[i][j] ? 'pink' : undefined,
+                backgroundColor: grid[i][j] ? 'black' : undefined,
                 border: '1px solid black',
               }}
             />
