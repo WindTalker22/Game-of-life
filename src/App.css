@@ -31,6 +31,27 @@
   width: 40%;
 }
 
+.GameDescription {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Description {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80vw;
+}
+
+.GameRules {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
 .Board {
   display: flex;
   justify-content: center;
