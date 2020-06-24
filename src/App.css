@@ -18,6 +18,19 @@
   margin-bottom: 1rem;
 }
 
+.InfoBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Info {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 40%;
+}
+
 .Board {
   display: flex;
   justify-content: center;
